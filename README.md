@@ -14,8 +14,3 @@ Compilação e execução: após o download ou clone do respoistório executar o
 		
 	Por fim na raiz do projeto:
 		ng serve
-
-
-
-
-
