@@ -1,40 +1,50 @@
 <img id="img-background" src="../../../assets/fundo.jpg">
 
-  <div class="flex items-center justify-center  ">
+  <div class="flex items-center justify-center">
     <div class="flex space-x-4 justify-center p-8">
-      <span class="font-extrabold text-3xl text-center" style="color: #ffcb08;" *ngIf="spinner && exibe_title">Carregando</span>
+      <span class="font-extrabold text-3xl text-center" style="color: #ffffff;" *ngIf="spinner && exibe_title">Carregando as primeiras 25 cartas</span>
 
-      <div  *ngIf="exibeFiltro" style="height: 350px; left: 50px;" class="info-deck bg-white p-8 shadow-md rounded-md">
+      <div  *ngIf="exibeFiltro" style="height: 500px; left: 50px; background-color: #008CFF;" class="info-deck bg-white p-8 shadow-md rounded-md">
 
-        <h2 class="text-center">Cartas Adicionadas: {{contadorCards}}</h2>
+        <h2 class="text-center"><b>Criação do Deck</b></h2>
 
         <mat-form-field style="width: 100%;">
           <mat-label>Pesquisar</mat-label>
           <input (keyup.enter)="getCardByName()" [(ngModel)]="userInput" matInput placeholder="Informe o valor e ENTER" style="width: 100%;" #input>
         </mat-form-field> 
 
-        <mat-form-field style="width: 100%;">
-          <mat-label>Nome do Deck</mat-label>
-          <input  [(ngModel)]="nameDeck"  matInput placeholder="Nome do Deck" #input>
+        <mat-form-field style="width: 100%; margin-top: 30px">
+          <mat-label><b>Nome do Deck</b></mat-label>
+          <input  [(ngModel)]="nameDeck"  matInput placeholder="Nome do Deck" #input cla>
         </mat-form-field><br>
 
         
-        <div class="flex w-full justify-around">
-            <button [disabled]="paginatorOFF" (click)="onBeforePage()" mat-mini-fab style="background-color: #004a94; color: white;">
-              <mat-icon>navigate_before</mat-icon>
-            </button>
-            
-            <span style="right: 185px;" class="text-center mt-2">{{contadorPage}}/250</span> <br>
-            
-            <button [disabled]="paginatorOFF" (click)="onNextPage()" class="ml-3" mat-mini-fab style="background-color: #004a94; color: white;">
-              <mat-icon>navigate_next</mat-icon>
-            </button>
-        </div>
+
 
         <div class="flex w-full justify-around">
           <button  class="mt-4 mr-2"  (click)="goHome()" style="background-color: #efefef; color: black; float:left; width: 50%;" mat-raised-button><mat-icon aria-hidden="false" fontIcon="arrow_left_alt"></mat-icon> Voltar</button>
-         <button class="mt-4 ml-2" (click)="createDeck()" style="background-color: #004a94; color: white; width: 50%;" mat-raised-button>Salvar <mat-icon aria-hidden="false" fontIcon="add_circle"></mat-icon></button>
+         <button class="mt-4 ml-2" (click)="createDeck()" style="background-color: #014921; color: white; width: 50%;" mat-raised-button>Salvar <mat-icon aria-hidden="false" fontIcon="add_circle"></mat-icon></button>
       </div>
+
+
+      <div class="flex w-full justify-around mb-3 mt-3">
+        <h2 class="text-center">Cartas Adicionadas: {{contadorCards}}</h2>
+      </div>
+
+
+      <div class="flex w-full justify-around mt-5 mb-3" style="background-color: silver;">
+          <button [disabled]="paginatorOFF" (click)="onBeforePage()" mat-mini-fab style="background-color: #4f4f50; color: white;">
+            <mat-icon>navigate_before</mat-icon>
+          </button>
+          
+          <span style="margin-left: 40px;" class="text-center mt-2">{{contadorPage}}/250</span> <br>
+          
+          <button [disabled]="paginatorOFF" (click)="onNextPage()" class="ml-3" mat-mini-fab style="background-color: #4f4f50; color: white;">
+            <mat-icon>navigate_next</mat-icon>
+          </button>
+      </div>
+
+
     </div>
     <div class="scroll" style="overflow-x: scroll; max-height: 620px;">
       <div class="flex flex-wrap -mx-4 container p-4">

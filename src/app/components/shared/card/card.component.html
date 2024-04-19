@@ -2,12 +2,14 @@
     <img [src]="data.img" alt="">
 
     <div class="btns p-2 flex items-center justify-around" style="background-color: #fcea69;">
-        <button (click)="addCard()" style="color: white; background-color:rgb(29, 0, 106);">
-            <mat-icon>add</mat-icon>
-        </button> 
+
         <button mat-mini-fab mat-dialog-close="" style="background-color: red; color: white;">
             <mat-icon>close</mat-icon>
         </button>
+
+        <button  mat-mini-fab (click)="addCard()" style="color: white; background-color:rgb(11, 207, 21);">
+            <mat-icon>add</mat-icon>
+        </button> 
     </div>
 </div>
 
