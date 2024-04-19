@@ -19,14 +19,7 @@ export class DeckCreateComponent implements OnInit {
   constructor(private cardService: CardListService,private router: Router, private dialog: MatDialog){}
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-  @ViewChild('myVideo') myVideo: any;
 
-  pauseVideo() {
-    this.myVideo.nativeElement.pause();
-  }
-  playVideo() {
-    this.myVideo.nativeElement.play();
-  }
   deckCards: Array<any> = [];
   paginatorOFF: boolean = true;
   uniqueCard: Array<any> = [];
@@ -46,7 +39,6 @@ export class DeckCreateComponent implements OnInit {
       this.spinner = false;
       this.deckCards = res.data;
       this.exibe_title = false;
-      this.pauseVideo();
       this.exibeFiltro = true;
     })
   }
@@ -58,11 +50,9 @@ export class DeckCreateComponent implements OnInit {
   getCardByName(){
     this.exibeFiltro = true;
     this.spinner = true;
-    this.playVideo();
     if(this.userInput != "" && this.userInput != undefined){
       this.paginatorOFF = true;
       this.cardService.getCardByName(this.userInput).subscribe((res)=>{
-        this.pauseVideo();
         this.spinner = false;
         this.deckCards = res.data;
       })
@@ -72,7 +62,6 @@ export class DeckCreateComponent implements OnInit {
         this.spinner = false;
         this.deckCards = res.data;
         this.exibe_title = false;
-        this.pauseVideo();
       })
     }
   }
@@ -136,28 +125,23 @@ export class DeckCreateComponent implements OnInit {
   }
 
   onNextPage() {
-    this.playVideo();
     this.spinner = true;
     this.contadorPage++
     this.cardService.getCardByPage(this.contadorPage).subscribe((res)=>{
       this.spinner = false;
       this.deckCards = (res.data);
       // this.dataSource = new MatTableDataSource(res.data);
-      this.pauseVideo();
     })
   }
   onBeforePage() {
     if(this.contadorPage === 1){
 
     }else{
-      this.playVideo();
       this.spinner = true;
       this.contadorPage--
       this.cardService.getCardByPage(this.contadorPage).subscribe((res)=>{
         this.spinner = false;
         this.deckCards = (res.data);
-        // this.dataSource = new MatTableDataSource(res.data);
-        this.pauseVideo();
       })
     }
   }
